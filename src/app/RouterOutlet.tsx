@@ -3,18 +3,20 @@ import { Route, Switch } from "react-router-dom";
 import AppLayout from "./views/layouts/AppLayout";
 import appRoutes from "./appRoutes";
 import { Loading } from "./views/shared/Loading/Loading";
+import { PrivateRoute } from "./views/shared/PrivateRoute/PrivateRoute";
 
 export default function RouterOutlet() {
     return (
         <Suspense fallback={<Loading tip="Loading page."/>}>
             <Switch>
                 {appRoutes.map((route: any) => {
+                    const RouteComponent = route.private ? PrivateRoute : Route;
                     return (
-                        <Route key={route.path} path={route.path} exact={route.exact}>
+                        <RouteComponent key={route.path} path={route.path} exact={route.exact}>
                             <AppLayout>
-                                <route.component/>
+                                {route.component ? <route.component/> : route.render()}
                             </AppLayout>
-                        </Route>
+                        </RouteComponent>
                     );
                 })}
             </Switch>

@@ -1,4 +1,6 @@
 import React from "react";
+import { Layout } from "antd";
+import styles from './style.module.scss';
 
 interface IProps {
     children: JSX.Element[] | JSX.Element;
@@ -10,5 +12,9 @@ interface IProps {
  * @param children
  */
 export function AppLayout({children}: IProps) {
-    return <>{children}</>;
+    return <Layout>
+        <Layout.Content className={styles.appContentStyles}>
+            {children}
+        </Layout.Content>
+    </Layout>;
 }

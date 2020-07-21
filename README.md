@@ -1,4 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Mentoring app
+
+### Overview
+Talkin' about client-side or server-side rendering(aka. SSR), I can say that I like both of them. 
+These 2 approaches have similar cons and pros, but for this project, I decided to use the client-side approach, because: 
+1. We don't have a problem with "SEO" in the project, because this is an administration dashboard.
+2. SSR can improve performance if your application is small. But it can also degrade performance if it is heavy.
+3. In SSR, the application performance depends on the server’s resources and user’s network speed, which depends on the company budget too.
+
+On the other hand, the client-side rendering doesn't chain our hands, so we can use server-side rendering too, for that reason we've *isomorphic* approach, [see here](https://www.baeldung.com/react-nashorn-isomorphic-app).
+
+### Librabries
+- React - 16.x.x
+- [Redux-Toolkit](https://redux-toolkit.js.org/) - this is an official redux toolset for efficient Redux development, with Typescript support, which includes other libraries such a `redux-thunk`, `reselect`
+- [React-router](https://reactrouter.com/web/guides/quick-start) - as a routing framework, this also supports server-side routing
+- [Ant-design](https://ant.design/docs/react/introduce) - as UI Framework
+
+
+### Why I choose Redux as a state management paradigm?
+In our days we've some favorite options for react state management, that is`
+- Redux 
+- Mobx
+- React Global Hook
+
+I released the applications and work on big projects with both of them and I collected some thoughts about the cons and pros
+
+Mobx is very simple in learning and use, this doesn't have that many rules such a Redux has. Mobx also like the OOP approach and use an Observable pattern, which gives you freedom in state management.  
+
+On the other hand, Redux allows you to reason about your application state even though it is on a larger scale. 
+**Redux comes with more boilerplate as MobX because it was added for specific design constraints.**
+In MobX one wraps the objects and arrays into observable objects which hide most of the boilerplate. It builds upon hidden abstractions.
+In Redux it is easier to reason about it with plain JavaScript. It makes it easier for testing and easier for debugging your application.
+
+Overall Mobx/React Global Hook is my favorite when I want to write a small application and  Redux with his official toolkit [Redux-Toolkit](https://redux-toolkit.js.org/)  the best fit for the big and scalable systems.
+
+### Why I chose Ant design as UI Framework
+First of all, I want to say that is a hard decision to select a correct UI framework without enough specifications. Selecting the correct UI Framework depends on UI Team preferences and application requirements. Anyway, I'll try to explain why I chose UI Framework and why Ant-design.
+I started to look for UI Framework because spending time to write some basic stuff, not a good idea for this simple task :) 
+If I'll have some specifications or designs, maybe I'll choose to write custom one instead of a UI framework.
+
+So, I found the [list](https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/) of top React UI frameworks. I had experience with some of them, e.g Ant-design, Material-UI, Blueprint, Carbon Components, React bootstrap, Semantic UI.
+I can tell you about the differences between these frameworks but not in this document, so I can tell you about the pros of using `Ant-design`.
+
+1. Ant-design provides high-quality components for rich, interactive user interfaces.
+2. This is Typescript friendly
+3. This not use the css-in-js approach, which may look confusing for backend developers.
 
 ## Available Scripts
 
@@ -37,8 +82,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### References
+- UI Lib list - [https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/](https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/)
+- Redux vs Mobx - [https://www.robinwieruch.de/redux-mobx](https://www.robinwieruch.de/redux-mobx)
+- Isomorphic approach - [https://www.baeldung.com/react-nashorn-isomorphic-app](https://www.baeldung.com/react-nashorn-isomorphic-app)
+- SSR and Client-side rendering - [https://www.freecodecamp.org/news/what-exactly-is-client-side-rendering-and-hows-it-different-from-server-side-rendering-bd5c786b340d/](https://www.freecodecamp.org/news/what-exactly-is-client-side-rendering-and-hows-it-different-from-server-side-rendering-bd5c786b340d/)

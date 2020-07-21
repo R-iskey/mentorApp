@@ -1,17 +1,43 @@
 import React, { lazy } from "react";
 import { Redirect, RouteProps } from "react-router";
 
-const DashboardPage = lazy(() => import("./views/pages/Dashboard"));
+const ProfilePage = lazy(() => import("./views/pages/Profile"));
+const RegisterPage = lazy(() => import("./views/pages/Auth/Register"));
+const GroupsPage = lazy(() => import("./views/pages/Groups"));
+const LoginPage = lazy(() => import("./views/pages/Auth/Login"));
 const NotFoundPage = lazy(() => import("./views/pages/NotFound"));
 
 interface IRouteProps extends RouteProps {
     path: string;
+    private?: boolean;
 }
 
 const appRoutes: IRouteProps[] = [
     {
         path: "/",
-        component: DashboardPage,
+        exact: true,
+        render: () => <Redirect to={'/login'}/>
+    },
+    {
+        path: "/login",
+        component: LoginPage,
+        exact: true,
+    },
+    {
+        path: "/register",
+        component: RegisterPage,
+        exact: true,
+    },
+    {
+        path: "/profile",
+        component: ProfilePage,
+        // private: true,
+        exact: true,
+    },
+    {
+        path: "/groups",
+        component: GroupsPage,
+        // private: true,
         exact: true,
     },
     {

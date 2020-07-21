@@ -1,6 +1,7 @@
 import { RouterState } from "connected-react-router";
+import { ICommonStore } from "@store/common/typings";
 
 export interface IStore {
-    //@TODO ADD state
     router: RouterState;
+    common: ICommonStore;
 }
