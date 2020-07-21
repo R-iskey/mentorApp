@@ -42,7 +42,8 @@ export function ProfileGroup() {
                     renderItem={(item, index) => (
                         <List.Item
                             actions={[
-                                <a key="list-loadmore-edit" onClick={() => handleEdit(index)}>Edit</a>
+                                <Button type="link" key="list-loadmore-edit"
+                                        onClick={() => handleEdit(index)}>Edit</Button>
                             ]}
                         ><List.Item.Meta title={item.name}/></List.Item>
                     )}

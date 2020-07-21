@@ -10,7 +10,7 @@ export function Profile() {
 
     useEffect(() => {
         dispatch(commonOp.fetchCurrentUser());
-    }, []);
+    }, [dispatch]);
 
     return <Space direction="vertical">
         <ProfileInfo/>
