@@ -1,10 +1,13 @@
 {
-    "first_name": "Robert",
-    "last_name": "Keyan",
-    "country": "Armenia",
-    "city": "Yerevan",
-    "email": "robert@keyan.blog",
-    "gender": "male",
-    "department": "IT",
-    "job_title": "Software Engineer"
+    "metadata": {
+        "first_name": "Robert",
+        "last_name": "Keyan",
+        "country": "Armenia",
+        "city": "Yerevan",
+        "email": "robert@keyan.blog",
+        "gender": "male",
+        "department": "IT",
+        "job_title": "Software Engineer"
+    },
+    "groups": []
 }

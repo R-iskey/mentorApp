@@ -3,7 +3,6 @@ import { Redirect, RouteProps } from "react-router";
 
 const ProfilePage = lazy(() => import("./views/pages/Profile"));
 const RegisterPage = lazy(() => import("./views/pages/Auth/Register"));
-const GroupsPage = lazy(() => import("./views/pages/Groups"));
 const LoginPage = lazy(() => import("./views/pages/Auth/Login"));
 const NotFoundPage = lazy(() => import("./views/pages/NotFound"));
 
@@ -31,13 +30,7 @@ const appRoutes: IRouteProps[] = [
     {
         path: "/profile",
         component: ProfilePage,
-        // private: true,
-        exact: true,
-    },
-    {
-        path: "/groups",
-        component: GroupsPage,
-        // private: true,
+        private: true,
         exact: true,
     },
     {

@@ -36,29 +36,14 @@ export function Register() {
     }, []);
 
     const next = async () => {
-        if (await isValid()) {
+        const isValid = await formRef.current.validateFields();
+        if (isValid) {
             setCurrent(current + 1);
         }
     }
 
     const prev = () => {
         setCurrent(current - 1);
-    }
-
-    const handleFinish = async () => {
-        if (await isValid()) {
-            dispatch(commonOp.fetchLogin());
-            dispatch(routerOp.gotoPage('/groups'));
-        }
-    }
-
-    const isValid = async (): Promise<boolean> => {
-        try {
-            await formRef.current.validateFields();
-            return true;
-        } catch (errorInfo) {
-            return false;
-        }
     }
 
     const getActions = () => {
@@ -79,6 +64,15 @@ export function Register() {
         commonOp.setWizardData(allFields);
     };
 
+    const handleFinish = async () => {
+        const isValid = await formRef.current.validateFields();
+        if (isValid) {
+            await dispatch(commonOp.fetchLogin());
+            dispatch(routerOp.gotoPage('/profile'));
+            commonOp.resetWizardData();
+        }
+    }
+
     return <div className={styles.registerPage}>
         <Steps current={current}>
             {steps.map(item => (
@@ -86,8 +80,13 @@ export function Register() {
             ))}
         </Steps>
         <Card className={styles.registerStep} actions={getActions()}>
-            <Form ref={formRef} name="control-ref" layout={'vertical'} scrollToFirstError={true}
-                  onFieldsChange={handleFieldsChange}>
+            <Form
+                ref={formRef}
+                name="control-ref"
+                layout={'vertical'}
+                scrollToFirstError={true}
+                onFieldsChange={handleFieldsChange}
+            >
                 {steps[current].content}
             </Form>
         </Card>

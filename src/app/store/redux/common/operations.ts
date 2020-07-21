@@ -2,7 +2,7 @@ import { storage } from '../../../providers/storage';
 import { FieldData } from "rc-field-form/lib/interface";
 import { fetch } from '../../../providers/fetch';
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IEmployee } from "@store/common/typings";
+import { ICurrentUser, IEmployee, IUserGroup } from "@store/common/typings";
 
 const REG_WIZARD_ID = 'WizardRegInfo';
 
@@ -11,6 +11,7 @@ const setWizardData = (fieldData: FieldData[]) => {
         name: field.name,
         value: field.value || ''
     }));
+
     storage.set(REG_WIZARD_ID, data);
 };
 
@@ -22,15 +23,15 @@ const resetWizardData = () => {
     storage.remove(REG_WIZARD_ID);
 };
 
-const fetchLogin = createAsyncThunk(
+const fetchLogin = createAsyncThunk<string>(
     'common/fetchLogin',
     async () => {
-        const token = await new Promise((resolve) => resolve('AUTH_TOKEN'))
-        return true;
+        const token = await Promise.resolve('AUTH_TOKEN');
+        return token;
     }
 )
 
-const fetchCurrentUser = createAsyncThunk(
+const fetchCurrentUser = createAsyncThunk<ICurrentUser>(
     'common/fetchCurrentUser',
     async () => {
         const {data} = await fetch({url: '/api/v1/user.json'});
@@ -46,6 +47,17 @@ const fetchEmployees = createAsyncThunk<IEmployee[]>(
     }
 )
 
+const postNewGroup = createAsyncThunk<ICurrentUser, IUserGroup>(
+    'common/postNewGroup',
+    async (group: IUserGroup) => {
+        const {data} = await fetch({url: '/api/v1/user.json'});
+        return {
+            ...data,
+            groups: [group]
+        };
+    }
+)
+
 export default {
     setWizardData,
     getWizardData,
@@ -53,4 +65,5 @@ export default {
     fetchLogin,
     fetchCurrentUser,
     fetchEmployees,
+    postNewGroup
 }

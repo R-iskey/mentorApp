@@ -3,12 +3,15 @@ import { ICommonStore, ICurrentUser } from "@store/common/typings";
 import operations from "./operations";
 
 const initialState: ICommonStore = {
-    currentUser: {} as ICurrentUser,
+    currentUser: {
+        metadata: {},
+        groups: []
+    } as ICurrentUser,
     isAuth: false,
     error: {}
 };
 
-const {fetchLogin, fetchCurrentUser} = operations;
+const {fetchLogin, fetchCurrentUser, postNewGroup} = operations;
 
 export const commonSlice = createSlice({
     name: "common",
@@ -19,21 +22,27 @@ export const commonSlice = createSlice({
         },
     },
     extraReducers: builder => {
-        builder.addCase(fetchLogin.fulfilled, (state, action) => {
+        builder.addCase(fetchLogin.fulfilled, (state) => {
             state.isAuth = true;
         });
-        builder.addCase(fetchLogin.rejected, (state, action) => {
+        builder.addCase(fetchLogin.rejected, (state) => {
             state.isAuth = false;
         });
-        builder.addCase(fetchCurrentUser.pending, (state, action) => {
+        builder.addCase(fetchCurrentUser.pending, (state) => {
             state.error = {};
-            state.currentUser = {} as ICurrentUser;
+            state.currentUser = {
+                metadata: {},
+                groups: []
+            } as ICurrentUser;
         });
         builder.addCase(fetchCurrentUser.fulfilled, (state, action) => {
             state.currentUser = action.payload;
         });
         builder.addCase(fetchCurrentUser.rejected, (state, action) => {
             state.error = action.error;
+        });
+        builder.addCase(postNewGroup.fulfilled, (state, action) => {
+            state.currentUser = action.payload;
         });
     }
 });

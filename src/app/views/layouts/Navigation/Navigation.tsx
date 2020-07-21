@@ -16,9 +16,8 @@ export function Navigation() {
         return null;
     }
 
-    return <Menu theme='dark' onClick={handleClick} selectedKeys={['home']} mode="horizontal">
+    return <Menu theme='dark' onClick={handleClick} selectedKeys={['profile']} mode="horizontal">
         <Menu.Item key={'/profile'}>Profile</Menu.Item>
-        <Menu.Item key={'/groups'}>Groups</Menu.Item>
     </Menu>
 }
 

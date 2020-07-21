@@ -1,3 +1,7 @@
+/**
+ * @description Localstorage wrapper
+ * @member get, set, remove
+ */
 export const storage = {
     get: (key: string) => {
         const data = localStorage.getItem(key);

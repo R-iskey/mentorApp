@@ -25,7 +25,7 @@ export default function App() {
                         <Content>
                             <RouterOutlet/>
                         </Content>
-                        <Footer style={{textAlign: 'center'}}>Created in 2020, for MentorCliQ</Footer>
+                        <Footer style={{textAlign: 'center'}}>Created in 2020, for MentorcliQ</Footer>
                     </Layout>
                 </ErrorBoundary>
             </ConnectedRouter>

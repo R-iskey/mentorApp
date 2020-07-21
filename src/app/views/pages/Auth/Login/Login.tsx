@@ -12,8 +12,8 @@ export function Login() {
 
     const dispatch = useDispatch();
 
-    const handleLogin = () => {
-        dispatch(commonOp.fetchLogin());
+    const handleLogin = async () => {
+        await dispatch(commonOp.fetchLogin());
         dispatch(routerOp.gotoPage('/profile'));
     };
 
